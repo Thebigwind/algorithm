@@ -1,3 +1,5 @@
+package _5_array
+
 import (
 	"errors"
 	"fmt"
