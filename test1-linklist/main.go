@@ -1,5 +1,6 @@
 package main
 
+/*
 import (
 	"container/list"
 	"fmt"
@@ -224,3 +225,4 @@ func (l *List) PushFrontList(other *List) {
 		l.insertValue(e.Value, &l.root)
 	}
 }
+*/
