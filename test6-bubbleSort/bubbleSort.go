@@ -13,8 +13,8 @@ func main() {
 	fmt.Println(arr)
 }
 func BubbleSort(arr []int) {
-	for i := 0; i < len(arr)-1; i++ {
-		for j := 0; j < len(arr)-i-1; j++ {
+	for i := 0; i < len(arr)-1; i++ { //比较趟数
+		for j := 0; j < len(arr)-i-1; j++ { //每一趟比较的次数
 			if arr[j] > arr[j+1] {
 				arr[j], arr[j+1] = arr[j+1], arr[j]
 			}
