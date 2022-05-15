@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 )
 
 //快速排序
@@ -40,7 +39,9 @@ func main() {
 
 	c := []int{0, 10, 19, 24, 61, 5, 121, 9, 11, 34, 21, 22}
 
-	fmt.Println(qsort(c))
+	fmt.Println(qsor(c))
+	fmt.Println(bubbSort(c))
+	fmt.Println(qs(c))
 }
 
 func QuickSort(arr []int) {
@@ -75,10 +76,10 @@ func qsort(a []int) []int {
 	left, right := 0, len(a)-1
 
 	// Pick a pivot
-	pivotIndex := rand.Int() % len(a)
+	//pivotIndex := rand.Int() % len(a)
 
 	// Move the pivot to the right
-	a[pivotIndex], a[right] = a[right], a[pivotIndex]
+	//a[pivotIndex], a[right] = a[right], a[pivotIndex]
 
 	// Pile elements smaller than the pivot on the left
 	for i := range a {
@@ -89,11 +90,60 @@ func qsort(a []int) []int {
 	}
 
 	// Place the pivot after the last smaller element
-	a[left], a[right] = a[right], a[left]
+	//a[left], a[right] = a[right], a[left]
 
 	// Go down the rabbit hole
-	qsort(a[:left])
-	qsort(a[left+1:])
+	//qsort(a[:left])
+	//qsort(a[left+1:])
+
+	return a
+}
+
+
+func qsor(arr []int)[]int{
+	if len(arr)<2{
+		return arr
+	}
+	left,right := 0,len(arr)-1
+	for i := range arr{
+		if arr[i]<arr[right]{
+			arr[i],arr[left] = arr[left],arr[i]
+			left++
+		}
+	}
+	arr[right],arr[left] = arr[left],arr[right]
+
+	qsor(arr[:left])
+	qsor(arr[left+1:])
+	return arr
+}
+
+func bubbSort(arr []int)[]int{
+	for i:=0;i<len(arr);i++{
+		for j:=0;j<len(arr)-i-1;j++{
+			if arr[j]>arr[j+1]{
+				arr[j],arr[j+1] = arr[j+1],arr[j]
+			}
+		}
+	}
+	return arr
+}
+
+func qs(a []int)[]int{
+	if len(a)<2{
+		return a
+	}
+
+	left,right := 0,len(a)-1
+	for i := range a{
+		if a[i]<a[right]{
+			a[i],a[left] = a[left],a[i]
+			left++
+		}
+	}
+	a[right],a[left] = a[left],a[right]
+	qs(a[:left])
+	qs(a[left+1:])
 
 	return a
 }
